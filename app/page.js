@@ -136,7 +136,7 @@ export default function Home() {
   const endName = neighborhoods[endLoc] || '';
   const whatsappMsg = `Здравейте LuxeDrive! Бих искал да поръчам Дринк енд Драйв шофьор от: ${startName} до: ${endName}. (Прогнозна цена: ${priceText}, Разстояние: ${distance} km).`;
   
-  const whatsappUrl = `https://wa.me/359888888888?text=${encodeURIComponent(whatsappMsg)}`;
+  const whatsappUrl = `https://wa.me/359886611719?text=${encodeURIComponent(whatsappMsg)}`;
 
   // --- Handlers ---
   const handleFormSubmit = (e) => {
@@ -181,7 +181,7 @@ export default function Home() {
           {/* Action Area */}
           <div className="flex items-center gap-4">
             {/* Call Button */}
-            <a href="tel:+359888888888" className="btn-primary font-display font-semibold text-sm tracking-wider uppercase transition-colors duration-300">
+            <a href="tel:+359886611719" className="btn-primary font-display font-semibold text-sm tracking-wider uppercase transition-colors duration-300">
               Позвъни Сега
             </a>
             
@@ -192,9 +192,9 @@ export default function Home() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden flex flex-col justify-between w-6 h-4 bg-transparent border-none cursor-pointer"
             >
-              <span className="w-full h-0.5 bg-primary transition-transform duration-300" style={isMenuOpen ? {transform: 'translateY(6px) rotate(45deg)'} : {}}></span>
-              <span className="w-full h-0.5 bg-primary transition-opacity duration-300" style={isMenuOpen ? {opacity: 0} : {}}></span>
-              <span className="w-full h-0.5 bg-primary transition-transform duration-300" style={isMenuOpen ? {transform: 'translateY(-6px) rotate(-45deg)'} : {}}></span>
+              <span className="w-full h-0.5 hamburger-line transition-transform duration-300" style={isMenuOpen ? {transform: 'translateY(6px) rotate(45deg)'} : {}}></span>
+              <span className="w-full h-0.5 hamburger-line transition-opacity duration-300" style={isMenuOpen ? {opacity: 0} : {}}></span>
+              <span className="w-full h-0.5 hamburger-line transition-transform duration-300" style={isMenuOpen ? {transform: 'translateY(-6px) rotate(-45deg)'} : {}}></span>
             </button>
           </div>
         </div>
@@ -208,7 +208,7 @@ export default function Home() {
         <a href="#reviews" onClick={() => setIsMenuOpen(false)} className="mobile-nav-link text-2xl font-display">Отзиви</a>
         <a href="#contact" onClick={() => setIsMenuOpen(false)} className="mobile-nav-link text-2xl font-display">Контакти</a>
         
-        <a href="tel:+359888888888" className="btn-primary px-8 py-4 font-display font-semibold tracking-wider uppercase mt-4">
+        <a href="tel:+359886611719" className="btn-primary px-8 py-4 font-display font-semibold tracking-wider uppercase mt-4">
           Звънни за Шофьор
         </a>
       </div>
@@ -242,7 +242,7 @@ export default function Home() {
               </p>
 
               <div className="flex flex-wrap gap-4 mt-4">
-                <a href="tel:+359888888888" className="btn-primary font-display font-semibold tracking-wider uppercase transition-colors duration-300">
+                <a href="tel:+359886611719" className="btn-primary font-display font-semibold tracking-wider uppercase transition-colors duration-300">
                   Поръчай по Телефона
                 </a>
                 <a href="#calculator" className="btn-secondary font-display font-semibold tracking-wider uppercase transition-colors duration-300">
@@ -282,18 +282,18 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col gap-3">
-                <a href="tel:+359888888888" className="quick-contact-btn flex items-center justify-between border border-muted hover:border-accent hover:bg-accent/5 transition-all duration-300">
+                <a href="tel:+359886611719" className="quick-contact-btn flex items-center justify-between border border-muted hover:border-accent hover:bg-accent/5 transition-all duration-300">
                   <div className="flex items-center gap-3">
                     <span className="text-accent text-xl">📞</span>
                     <div className="text-left">
                       <p className="text-xs text-secondary">Телефонна линия</p>
-                      <p className="font-bold font-display tracking-wider text-primary">+359 88 888 8888</p>
+                      <p className="font-bold font-display tracking-wider text-primary">+359 88 661 1719</p>
                     </div>
                   </div>
                   <span className="text-accent">➔</span>
                 </a>
 
-                <a href="https://wa.me/359888888888" target="_blank" rel="noopener noreferrer" className="quick-contact-btn flex items-center justify-between border border-muted hover:border-accent hover:bg-accent/5 transition-all duration-300">
+                <a href="https://wa.me/359886611719" target="_blank" rel="noopener noreferrer" className="quick-contact-btn flex items-center justify-between border border-muted hover:border-accent hover:bg-accent/5 transition-all duration-300">
                   <div className="flex items-center gap-3">
                     <span className="text-[#25D366] text-xl">💬</span>
                     <div className="text-left">
@@ -304,7 +304,7 @@ export default function Home() {
                   <span className="text-accent">➔</span>
                 </a>
 
-                <a href="viber://chat?number=%2B359888888888" className="quick-contact-btn flex items-center justify-between border border-muted hover:border-accent hover:bg-accent/5 transition-all duration-300">
+                <a href="viber://chat?number=%2B359886611719" className="quick-contact-btn flex items-center justify-between border border-muted hover:border-accent hover:bg-accent/5 transition-all duration-300">
                   <div className="flex items-center gap-3">
                     <span className="text-[#7360F2] text-xl">📱</span>
                     <div className="text-left">
@@ -503,7 +503,6 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* Feature 1 */}
               <div className="bg-secondary border border-muted text-left flex flex-col gap-4 hover:border-accent transition-colors duration-300 card-spacious">
-                <span className="text-3xl text-accent">👮‍♂️</span>
                 <h3 className="text-lg font-display font-bold uppercase tracking-wider text-primary">
                   Опитни Шофьори
                 </h3>
@@ -514,7 +513,6 @@ export default function Home() {
 
               {/* Feature 2 */}
               <div className="bg-secondary border border-muted text-left flex flex-col gap-4 hover:border-accent transition-colors duration-300 card-spacious">
-                <span className="text-3xl text-accent">⚡</span>
                 <h3 className="text-lg font-display font-bold uppercase tracking-wider text-primary">
                   Бързо Пристигане
                 </h3>
@@ -525,7 +523,6 @@ export default function Home() {
 
               {/* Feature 3 */}
               <div className="bg-secondary border border-muted text-left flex flex-col gap-4 hover:border-accent transition-colors duration-300 card-spacious">
-                <span className="text-3xl text-accent">🛡️</span>
                 <h3 className="text-lg font-display font-bold uppercase tracking-wider text-primary">
                   Пълна Застраховка
                 </h3>
@@ -536,7 +533,6 @@ export default function Home() {
 
               {/* Feature 4 */}
               <div className="bg-secondary border border-muted text-left flex flex-col gap-4 hover:border-accent transition-colors duration-300 card-spacious">
-                <span className="text-3xl text-accent">💶</span>
                 <h3 className="text-lg font-display font-bold uppercase tracking-wider text-primary">
                   Разумни Цени
                 </h3>
@@ -699,10 +695,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Trustpilot Disclaimer */}
-            <p className="text-[10px] text-muted text-center tracking-wider font-medium">
-              * Посочените по-горе отзиви са илюстративни с цел демонстрация на качеството на услугата ни съгласно стандартите на Trustpilot.
-            </p>
+
           </div>
         </section>
 
@@ -748,7 +741,7 @@ export default function Home() {
                     <span className="text-accent text-lg">📞</span>
                     <div>
                       <p className="text-[10px] text-muted uppercase tracking-widest">Телефон за поръчки</p>
-                      <p className="text-sm font-bold text-primary">+359 88 888 8888</p>
+                      <p className="text-sm font-bold text-primary">+359 88 661 1719</p>
                     </div>
                   </div>
                 </div>
@@ -900,7 +893,7 @@ export default function Home() {
           <div className="flex flex-col gap-3 mt-2">
             <a 
               id="modal-call-btn" 
-              href="tel:+359888888888" 
+              href="tel:+359886611719" 
               className="btn-primary w-full text-center font-display font-bold tracking-wider text-xs uppercase transition-colors duration-300"
             >
               Обади се за поръчка

@@ -523,10 +523,30 @@ body.lang-en [lang-bg] {
 }
 
 /* Header state on scroll */
+header {
+  height: 5.5rem;
+  display: flex;
+  align-items: center;
+}
 header.scrolled {
   background-color: var(--bg-primary);
   height: 4.5rem;
   border-color: var(--border-color);
+}
+.hamburger-line {
+  background-color: var(--text-primary);
+}
+@media (max-width: 768px) {
+  header {
+    height: 4.5rem;
+  }
+  header.scrolled {
+    height: 4rem;
+  }
+  header .btn-primary {
+    padding: 0.6rem 1.2rem !important;
+    font-size: 0.75rem !important;
+  }
 }
 
 /* Scroll Snap/Smooth */
