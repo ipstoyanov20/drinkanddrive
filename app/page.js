@@ -796,13 +796,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Active hours indicator */}
-                <div className="bg-primary border border-muted p-4 flex items-center gap-3">
-                  <span className="w-2 h-2 bg-green-500 animate-pulse"></span>
-                  <p className="text-xs text-secondary font-bold tracking-wide uppercase">
-                    Шофьори на разположение в момента
-                  </p>
-                </div>
+                
               </div>
 
               {/* Contact Form */}
@@ -905,7 +899,7 @@ export default function Home() {
           <button 
             id="close-modal" 
             onClick={() => setIsModalOpen(false)}
-            className="absolute top-4 right-4 text-secondary hover:text-primary text-xl bg-transparent border-none cursor-pointer"
+            className="modal-close-btn"
           >
             ✕
           </button>
