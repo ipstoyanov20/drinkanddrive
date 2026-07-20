@@ -271,7 +271,7 @@ export default function Home() {
             </div>
 
             {/* Quick Contacts widget / Right column */}
-            <div className="lg:col-span-5 bg-secondary border border-muted p-8 relative flex flex-col gap-6 w-full max-w-md mx-auto card-spacious">
+            <div className="lg:col-span-5 bg-secondary border border-muted p-8 relative flex flex-col gap-6 w-full max-w-md mx-auto card-spacious-static">
               <div className="border-b border-muted pb-4">
                 <h2 className="text-xl font-display font-bold uppercase tracking-wider text-primary">
                   Бърза Връзка
@@ -549,7 +549,7 @@ export default function Home() {
         </section>
 
         {/* TRUSTPILOT REVIEWS SECTION */}
-        <section id="reviews" className="py-24 px-6 border-b border-muted bg-secondary/30">
+        <section id="reviews" className="py-24 px-6 border-b border-muted bg-reviews-gradient">
           <div className="max-w-7xl mx-auto flex flex-col gap-16">
             
             {/* Trustpilot Overall Header */}
@@ -565,8 +565,8 @@ export default function Home() {
               </div>
 
               {/* Rating Widget */}
-              <div className="flex items-center gap-6 p-6 bg-primary border border-muted">
-                <div className="flex flex-col gap-1">
+              <div className="glass-widget">
+                <div className="flex flex-col items-center sm:items-start gap-1">
                   <div className="flex items-center gap-2">
                     <span className="font-display font-extrabold text-2xl tracking-wider text-[#00B67A]">Trustpilot</span>
                   </div>
@@ -578,8 +578,8 @@ export default function Home() {
                     <span className="tp-star"></span>
                   </div>
                 </div>
-                <div className="h-10 w-px bg-muted"></div>
-                <div className="text-left">
+                <div className="glass-widget-divider"></div>
+                <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
                   <p className="font-bold text-lg leading-none text-primary">4.8 / 5</p>
                   <p className="text-xs text-secondary mt-1 font-semibold">
                     Оценка: <strong>Отличен</strong>
@@ -594,7 +594,7 @@ export default function Home() {
             {/* Custom Trustpilot Reviews Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Card 1 */}
-              <div className="bg-primary border border-muted flex flex-col justify-between gap-6 hover:border-accent transition-colors duration-300 card-spacious">
+              <div className="glass-card flex flex-col justify-between gap-6">
                 <div className="flex flex-col gap-4">
                   {/* Rating Stars and Date */}
                   <div className="flex justify-between items-center">
@@ -624,16 +624,12 @@ export default function Home() {
                   <div className="w-10 h-10 bg-accent/10 flex items-center justify-center font-bold text-accent text-sm">IS</div>
                   <div>
                     <p className="font-semibold text-sm text-primary">Иван Стоянов</p>
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      <span className="text-[#00B67A] text-xs">✓</span>
-                      <span className="text-[10px] text-[#00B67A] uppercase tracking-wider font-bold">Потвърден клиент</span>
-                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Card 2 */}
-              <div className="bg-primary border border-muted flex flex-col justify-between gap-6 hover:border-accent transition-colors duration-300 card-spacious">
+              <div className="glass-card flex flex-col justify-between gap-6">
                 <div className="flex flex-col gap-4">
                   {/* Rating Stars and Date */}
                   <div className="flex justify-between items-center">
@@ -663,16 +659,12 @@ export default function Home() {
                   <div className="w-10 h-10 bg-accent/10 flex items-center justify-center font-bold text-accent text-sm">EK</div>
                   <div>
                     <p className="font-semibold text-sm text-primary">Елена Колева</p>
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      <span className="text-[#00B67A] text-xs">✓</span>
-                      <span className="text-[10px] text-[#00B67A] uppercase tracking-wider font-bold">Потвърден клиент</span>
-                    </div>
                   </div>
                 </div>
               </div>
 
               {/* Card 3 */}
-              <div className="bg-primary border border-muted flex flex-col justify-between gap-6 hover:border-accent transition-colors duration-300 card-spacious">
+              <div className="glass-card flex flex-col justify-between gap-6">
                 <div className="flex flex-col gap-4">
                   {/* Rating Stars and Date */}
                   <div className="flex justify-between items-center">
@@ -702,10 +694,6 @@ export default function Home() {
                   <div className="w-10 h-10 bg-accent/10 flex items-center justify-center font-bold text-accent text-sm">SD</div>
                   <div>
                     <p className="font-semibold text-sm text-primary">Стефан Димитров</p>
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      <span className="text-[#00B67A] text-xs">✓</span>
-                      <span className="text-[10px] text-[#00B67A] uppercase tracking-wider font-bold">Потвърден клиент</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -847,7 +835,7 @@ export default function Home() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-primary border-t border-muted py-12 px-6">
+      <footer className="bg-primary border-t border-muted site-footer px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col items-center md:items-start gap-2">
             <span className="font-display font-extrabold text-xl tracking-wider text-accent">

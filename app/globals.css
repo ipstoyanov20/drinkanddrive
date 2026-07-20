@@ -88,6 +88,17 @@ a {
 .h-full {
   height: 100%;
 }
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.w-fit {
+  width: fit-content;
+}
 
 /* Flexbox and Grids */
 .flex {
@@ -347,6 +358,15 @@ body.lang-en [lang-bg] {
 .bg-secondary\/80 {
   background-color: rgba(248, 249, 250, 0.95);
 }
+.bg-white\/75 {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.bg-white\/90 {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.bg-gradient-to-t {
+  background-image: linear-gradient(to top, var(--bg-primary), rgba(255, 255, 255, 0.4), transparent);
+}
 .quick-contact-btn {
   background-color: var(--bg-primary);
   transition: all 0.3s ease;
@@ -382,6 +402,65 @@ body.lang-en [lang-bg] {
   content: "★";
 }
 
+/* Reviews Glassmorphism & Background Glow */
+.bg-reviews-gradient {
+  background: radial-gradient(circle at 10% 20%, rgba(0, 135, 90, 0.05) 0%, transparent 45%),
+              radial-gradient(circle at 90% 80%, rgba(0, 135, 90, 0.04) 0%, transparent 45%),
+              var(--bg-secondary);
+}
+.glass-card {
+  padding: 3rem !important;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 232, 235, 0.6);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: var(--accent);
+  box-shadow: 0 12px 40px 0 rgba(0, 135, 90, 0.08);
+  transform: translateY(-2px);
+}
+.glass-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 2rem !important;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 232, 235, 0.6);
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.02);
+}
+@media (min-width: 640px) {
+  .glass-widget {
+    flex-direction: row;
+    text-align: left;
+    padding: 2.5rem !important;
+  }
+}
+.glass-widget-divider {
+  height: 1px;
+  width: 4rem;
+  background-color: var(--border-color);
+}
+@media (min-width: 640px) {
+  .glass-widget-divider {
+    height: 2.5rem;
+    width: 1px;
+  }
+}
+
+.site-footer {
+  padding-top: 4rem;
+  padding-bottom: 6.5rem; /* Spacious padding bottom on desktop */
+}
+
 /* Generous Card Padding */
 .card-spacious {
   padding: 3rem !important; /* Generous inner padding */
@@ -391,6 +470,11 @@ body.lang-en [lang-bg] {
 }
 .card-spacious:hover {
   border-color: var(--accent);
+}
+.card-spacious-static {
+  padding: 3rem !important;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
 }
 
 /* Forms & Calculator select boxes */
@@ -540,5 +624,18 @@ html {
   }
   .card-spacious {
     padding: 2rem !important; /* Slightly smaller on mobile to fit screens */
+  }
+  .card-spacious-static {
+    padding: 2rem !important;
+  }
+  .glass-card {
+    padding: 2rem !important;
+  }
+  .glass-widget {
+    padding: 1.5rem !important;
+  }
+  .site-footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 }
