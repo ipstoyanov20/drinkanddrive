@@ -1,29 +1,29 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'LuxeDrive Бургас | Премиум Дринк енд Драйв Услуги 24/7',
-  description: 'Професионални дринк енд драйв услуги в град Бургас и региона. Ние прибираме Вас и Вашия автомобил безопасно, сигурно и бързо. Изчислете цена онлайн и поръчайте шофьор веднага!',
-  keywords: 'дринк и драйв бургас, drink and drive burgas, денонощен шофьор бургас, прибиране с кола бургас, пил съм бургас, drink drive burgas, шофьор под наем бургас, такси бургас',
-  authors: [{ name: 'LuxeDrive Burgas' }],
+  title: 'Drink and drive Burgas | Денонощен Дринк енд Драйв / Drink and Drive Burgas 24/7',
+  description: 'Премиум дринк енд драйв (drink and drive) услуги в Бургас, Поморие, Созопол, Несебър, Приморско, Царево, Средец, Руен и Сунгурларе 24/7. Изчислете цена онлайн!',
+  keywords: 'drink and drive burgas, дринк енд драйв бургас, дринк анд драйв бургас, дринк и драйв бургас, drink drive burgas, денонощен шофьор бургас, прибиране с кола бургас, такси бургас, дринк енд драйв поморие, дринк енд драйв созопол, дринк енд драйв несебър, дринк енд драйв приморско, дринк енд драйв царево, drink and drive pomorie, sozopol, nesebar, primorsko, tsarevo, sredets, ruen, sungurlare',
+  authors: [{ name: 'Drink and drive Burgas' }],
   robots: 'index, follow',
   openGraph: {
     type: 'website',
     url: 'https://luxedrive-burgas.com/',
-    title: 'LuxeDrive Бургас | Премиум Дринк енд Драйв Услуги 24/7',
-    description: 'Безопасно и луксозно прибиране с Вашия собствен автомобил в град Бургас и региона. Изчислете цена онлайн и поръчайте за 15 минути.',
+    title: 'Drink and drive Burgas | Денонощен Дринк енд Драйв / Drink and Drive Burgas 24/7',
+    description: 'Премиум дринк енд драйв (drink and drive) услуги в Бургас, Поморие, Созопол, Несебър, Приморско, Царево, Средец, Руен и Сунгурларе 24/7. Изчислете цена онлайн!',
     images: [
       {
         url: '/hero_bg.jpg',
         width: 1200,
         height: 630,
-        alt: 'LuxeDrive Бургас',
+        alt: 'Drink and drive Burgas',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LuxeDrive Бургас | Премиум Дринк енд Драйв',
-    description: 'Безопасно и луксозно прибиране с Вашия собствен автомобил в град Бургас и региона. Изчислете цена онлайн и поръчайте за 15 минути.',
+    title: 'Drink and drive Burgas | Денонощен Дринк енд Драйв / Drink and Drive Burgas',
+    description: 'Премиум дринк енд драйв (drink and drive) услуги в Бургас, Поморие, Созопол, Несебър, Приморско, Царево, Средец, Руен и Сунгурларе 24/7. Изчислете цена онлайн!',
     images: ['/hero_bg.jpg'],
   },
 };
@@ -33,11 +33,11 @@ export default function RootLayout({ children }) {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "TaxiService",
-    "name": "LuxeDrive Бургас",
+    "name": "Drink and drive Burgas",
     "image": "https://luxedrive-burgas.com/hero_bg.jpg",
     "@id": "https://luxedrive-burgas.com/#service",
     "url": "https://luxedrive-burgas.com/",
-    "telephone": "+359888888888",
+    "telephone": "+359886611719",
     "priceRange": "BGN",
     "address": {
       "@type": "PostalAddress",
@@ -78,9 +78,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="bg" className="scroll-smooth">
       <head>
+        {/* <link rel="icon" href="/favicon.ico" type="image/png" /> */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}

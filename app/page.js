@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-// Neighborhood Data (Bulgarian Only)
+// Neighborhood & Oblast Burgas Location Data (Bulgarian Only)
 const neighborhoods = {
   center: 'Център',
   lazur: 'ж.к. Лазур',
@@ -12,7 +12,28 @@ const neighborhoods = {
   izgrev: 'ж.к. Изгрев',
   sarafovo: 'кв. Сарафово',
   kraimorie: 'кв. Крайморие',
-  vetren: 'кв. Ветрен / Банево'
+  vetren: 'кв. Ветрен / Банево',
+  // Oblast Burgas Towns
+  pomorie: 'Поморие',
+  sozopol: 'Созопол',
+  nesebar: 'Несебър',
+  primorsko: 'Приморско',
+  ruen: 'Руен',
+  sredets: 'Средец',
+  sungurlare: 'Сунгурларе',
+  tsarevo: 'Царево'
+};
+
+// Base distances from Burgas Center to Province Towns
+const provinceDistances = {
+  pomorie: 20,
+  sozopol: 32,
+  nesebar: 36,
+  primorsko: 50,
+  ruen: 43,
+  sredets: 30,
+  sungurlare: 82,
+  tsarevo: 70
 };
 
 // Distance matrix in km
@@ -72,9 +93,38 @@ const distanceMatrix = {
   'vetren_vetren': 0
 };
 
-// Helper function to get distance between two keys (handles symmetry)
+// Helper function to get distance between two keys (handles symmetry and province fallbacks)
 function getDistance(loc1, loc2) {
   if (loc1 === loc2) return 0;
+  
+  // If one of the locations is a province town
+  if (provinceDistances[loc1] !== undefined || provinceDistances[loc2] !== undefined) {
+    const town = provinceDistances[loc1] !== undefined ? loc1 : loc2;
+    const neighborhood = town === loc1 ? loc2 : loc1;
+    
+    // Base distance from center
+    let baseDist = provinceDistances[town];
+    
+    // Adjust based on neighborhood orientation
+    if (town === 'pomorie' || town === 'nesebar') {
+      // East/North-East towns (closer to Sarafovo, Izgrev, Lazur)
+      if (neighborhood === 'sarafovo') return baseDist - 8;
+      if (neighborhood === 'izgrev' || neighborhood === 'lazur') return baseDist - 2;
+      if (neighborhood === 'meden_rudnik') return baseDist + 5;
+    } else if (town === 'sozopol' || town === 'primorsko' || town === 'tsarevo') {
+      // South towns (closer to Kraimorie, Meden Rudnik)
+      if (neighborhood === 'kraimorie') return baseDist - 8;
+      if (neighborhood === 'meden_rudnik') return baseDist - 3;
+      if (neighborhood === 'sarafovo') return baseDist + 8;
+    } else if (town === 'sredets') {
+      // West town (closer to Meden Rudnik)
+      if (neighborhood === 'meden_rudnik') return baseDist - 5;
+      if (neighborhood === 'sarafovo') return baseDist + 10;
+    }
+    
+    return baseDist;
+  }
+  
   const key = [loc1, loc2].sort().join('_');
   return distanceMatrix[key] || 5; // Default to 5 km if undefined
 }
@@ -128,13 +178,16 @@ export default function Home() {
     price = 10; // Minimum local charge
   }
   
+  // Apply a 30% discount as requested by the user
+  price = price * 0.7;
+  
   const priceEur = (price * 0.51129).toFixed(2);
   const priceText = `${price.toFixed(2)} BGN`;
 
   // Pre-filled WhatsApp Text in Bulgarian
   const startName = neighborhoods[startLoc] || '';
   const endName = neighborhoods[endLoc] || '';
-  const whatsappMsg = `Здравейте LuxeDrive! Бих искал да поръчам Дринк енд Драйв шофьор от: ${startName} до: ${endName}. (Прогнозна цена: ${priceText}, Разстояние: ${distance} km).`;
+  const whatsappMsg = `Здравейте Drink and drive Burgas! Бих искал да поръчам Дринк енд Драйв шофьор от: ${startName} до: ${endName}. (Прогнозна цена: ${priceText}, Разстояние: ${distance} km).`;
   
   const whatsappUrl = `https://wa.me/359886611719?text=${encodeURIComponent(whatsappMsg)}`;
 
@@ -164,8 +217,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
-            <span className="font-display font-extrabold text-2xl tracking-wider text-accent transition-colors duration-300">
-              LUXE<span className="text-primary font-light">DRIVE</span>
+            <span className="font-display font-extrabold text-lg sm:text-xl md:text-2xl tracking-wider text-accent transition-colors duration-300">
+              DRINK & DRIVE<span className="text-primary font-light"> BURGAS</span>
             </span>
           </a>
 
@@ -181,7 +234,7 @@ export default function Home() {
           {/* Action Area */}
           <div className="flex items-center gap-4">
             {/* Call Button */}
-            <a href="tel:+359886611719" className="btn-primary font-display font-semibold text-sm tracking-wider uppercase transition-colors duration-300">
+            <a href="tel:+359886611719" className="btn-primary header-call-btn font-display font-semibold text-sm tracking-wider uppercase transition-colors duration-300">
               Позвъни Сега
             </a>
             
@@ -190,11 +243,11 @@ export default function Home() {
               id="menu-toggle" 
               aria-label="Toggle Menu" 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden flex flex-col justify-between w-6 h-4 bg-transparent border-none cursor-pointer"
+              className="md:hidden mobile-menu-toggle"
             >
-              <span className="w-full h-0.5 hamburger-line transition-transform duration-300" style={isMenuOpen ? {transform: 'translateY(6px) rotate(45deg)'} : {}}></span>
-              <span className="w-full h-0.5 hamburger-line transition-opacity duration-300" style={isMenuOpen ? {opacity: 0} : {}}></span>
-              <span className="w-full h-0.5 hamburger-line transition-transform duration-300" style={isMenuOpen ? {transform: 'translateY(-6px) rotate(-45deg)'} : {}}></span>
+              <span style={isMenuOpen ? {transform: 'translateY(8px) rotate(45deg)'} : {}}></span>
+              <span style={isMenuOpen ? {opacity: 0} : {}}></span>
+              <span style={isMenuOpen ? {transform: 'translateY(-8px) rotate(-45deg)'} : {}}></span>
             </button>
           </div>
         </div>
@@ -238,7 +291,7 @@ export default function Home() {
               </h1>
               
               <p className="text-secondary text-lg max-w-xl">
-                Професионално, сигурно и достъпно прибиране с Вашия собствен автомобил. Доверете се на опитните шофьори на LuxeDrive Burgas. Пристигаме до 15 минути.
+                Професионално, сигурно и достъпно прибиране с Вашия собствен автомобил. Доверете се на опитните шофьори на Drink and drive Burgas. Пристигаме до 15 минути.
               </p>
 
               <div className="flex flex-wrap gap-4 mt-4">
@@ -461,8 +514,8 @@ export default function Home() {
                       Приблизителна цена
                     </p>
                     <div className="flex items-baseline gap-2 mt-1">
-                      <span id="calc-price-bgn" className="text-3xl font-display font-black text-accent">{priceText}</span>
-                      <span id="calc-price-eur" className="text-sm text-secondary">(~{priceEur} EUR)</span>
+                      <span id="calc-price-eur" className="text-3xl font-display font-black text-accent">{priceEur} EUR</span>
+                      <span id="calc-price-bgn" className="text-sm text-secondary">(~{priceText})</span>
                     </div>
                     <p className="text-[10px] text-muted uppercase tracking-widest mt-1">
                       Разстояние: <span id="calc-dist">{distance} km</span> | Време: ~<span id="calc-time">{timeEst} мин</span>
@@ -495,7 +548,7 @@ export default function Home() {
                 Нашите Предимства
               </h2>
               <p className="text-3xl sm:text-4xl font-display font-extrabold uppercase tracking-wider text-primary">
-                Защо да изберете LuxeDrive?
+                Защо да изберете Drink and drive Burgas?
               </p>
               <div className="w-20 h-1 bg-accent mx-auto"></div>
             </div>
@@ -610,7 +663,7 @@ export default function Home() {
                       Най-добрата дринк услуга!
                     </h4>
                     <p className="text-secondary text-sm leading-relaxed font-light">
-                      „Поръчах LuxeDrive от Bar Caribi в Морската градина до Меден рудник. Шофьорът пристигна точно след 12 минути, изключително любезен и възпитан. Караше моето BMW много внимателно и плавно. Цената беше точно колкото калкулатора показа!“
+                      „Поръчах Drink and drive Burgas от Bar Caribi в Морската градина до Меден рудник. Шофьорът пристигна точно след 12 минути, изключително любезен и възпитан. Караше моето BMW много внимателно и плавно. Цената беше точно колкото калкулатора показа!“
                     </p>
                   </div>
                 </div>
@@ -645,7 +698,7 @@ export default function Home() {
                       Изключително професионални
                     </h4>
                     <p className="text-secondary text-sm leading-relaxed font-light">
-                      „Бяхме на рожден ден в ж.к. Лазур и трябваше да се приберем в Сарафово. За първи път ползвахме LuxeDrive. Шофьорът ни помогна с багажа и се държа изключително професионално. Колата ни е чисто нова и се притеснявахме, но той я управляваше страхотно.“
+                      „Бяхме на рожден ден в ж.к. Лазур и трябваше да се приберем в Сарафово. За първи път ползвахме Drink and drive Burgas. Шофьорът ни помогна с багажа и се държа изключително професионално. Колата ни е чисто нова и се притеснявахме, но той я управляваше страхотно.“
                     </p>
                   </div>
                 </div>
@@ -722,7 +775,6 @@ export default function Home() {
 
                 <div className="flex flex-col gap-4 border-t border-muted/50 pt-6">
                   <div className="flex items-center gap-3">
-                    <span className="text-accent text-lg">📍</span>
                     <div>
                       <p className="text-[10px] text-muted uppercase tracking-widest">Офис / Район</p>
                       <p className="text-sm font-bold text-primary">г. Бургас, България</p>
@@ -730,15 +782,13 @@ export default function Home() {
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    <span className="text-accent text-lg">✉️</span>
                     <div>
                       <p className="text-[10px] text-muted uppercase tracking-widest">Email</p>
-                      <p className="text-sm font-bold text-primary">office@luxedrive-burgas.com</p>
+                      <p className="text-sm font-bold text-primary">office@drinkanddrive-burgas.com</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center gap-3">
-                    <span className="text-accent text-lg">📞</span>
                     <div>
                       <p className="text-[10px] text-muted uppercase tracking-widest">Телефон за поръчки</p>
                       <p className="text-sm font-bold text-primary">+359 88 661 1719</p>
@@ -832,10 +882,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col items-center md:items-start gap-2">
             <span className="font-display font-extrabold text-xl tracking-wider text-accent">
-              LUXE<span className="text-primary font-light">DRIVE</span>
+              DRINK & DRIVE<span className="text-primary font-light"> BURGAS</span>
             </span>
             <p className="text-xs text-muted font-medium">
-              © 2026 LuxeDrive Burgas. Всички права запазени.
+              © 2026 Drink and drive Burgas. Всички права запазени.
             </p>
           </div>
 
@@ -885,7 +935,7 @@ export default function Home() {
               </div>
               <div>
                 <span className="text-xs text-muted uppercase tracking-widest font-semibold">Цена</span>
-                <p id="modal-price" className="font-extrabold text-accent font-display text-xl">{priceText}</p>
+                <p id="modal-price" className="font-extrabold text-accent font-display text-xl">{priceEur} EUR <span className="text-xs text-secondary font-sans font-normal">(~{priceText})</span></p>
               </div>
             </div>
           </div>
