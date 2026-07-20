@@ -8,7 +8,7 @@ export const metadata = {
   robots: 'index, follow',
   openGraph: {
     type: 'website',
-    url: 'https://luxedrive-burgas.com/',
+    url: 'https://drinkanddrive-burgas.com/',
     title: 'Drink and drive Burgas | Денонощен Дринк енд Драйв / Drink and Drive Burgas 24/7',
     description: 'Премиум дринк енд драйв (drink and drive) услуги в Бургас, Поморие, Созопол, Несебър, Приморско, Царево, Средец, Руен и Сунгурларе 24/7. Изчислете цена онлайн!',
     images: [
@@ -34,9 +34,9 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "TaxiService",
     "name": "Drink and drive Burgas",
-    "image": "https://luxedrive-burgas.com/hero_bg.jpg",
-    "@id": "https://luxedrive-burgas.com/#service",
-    "url": "https://luxedrive-burgas.com/",
+    "image": "https://drinkanddrive-burgas.com/hero_bg.jpg",
+    "@id": "https://drinkanddrive-burgas.com/#service",
+    "url": "https://drinkanddrive-burgas.com/",
     "telephone": "+359886611719",
     "priceRange": "BGN",
     "address": {
@@ -69,10 +69,17 @@ export default function RootLayout({ children }) {
       "https://www.facebook.com/luxedriveburgas",
       "https://www.instagram.com/luxedriveburgas"
     ],
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": "Бургас"
-    }
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Бургас" },
+      { "@type": "AdministrativeArea", "name": "Поморие" },
+      { "@type": "AdministrativeArea", "name": "Созопол" },
+      { "@type": "AdministrativeArea", "name": "Несебър" },
+      { "@type": "AdministrativeArea", "name": "Приморско" },
+      { "@type": "AdministrativeArea", "name": "Царево" },
+      { "@type": "AdministrativeArea", "name": "Средец" },
+      { "@type": "AdministrativeArea", "name": "Руен" },
+      { "@type": "AdministrativeArea", "name": "Сунгурларе" }
+    ]
   };
 
   return (
